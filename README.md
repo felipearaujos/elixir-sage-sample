@@ -1,21 +1,36 @@
 # SageSample
 
-**TODO: Add description**
 
-## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `sage_sample` to your list of dependencies in `mix.exs`:
+# Sample working
+
+With god error
 
 ```elixir
-def deps do
-  [
-    {:sage_sample, "~> 0.1.0"}
-  ]
-end
+
+iex(11)> SageSample.do_something
+
+15:38:29.193 [info]  [first_step] effects_so_far -> %{}
+
+15:38:29.193 [info]  [first_step] params -> []
+
+15:38:29.193 [info]  [second_step] {:error, :god_error}
+
+15:38:29.193 [info]  [compensate_second_step] -> %{first: :success_first_step}
+
+15:38:29.215 [info]  [second_step] {:ok, :working}
+
+15:38:29.215 [info]  [acknowledge_job] successfully
+
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/sage_sample](https://hexdocs.pm/sage_sample).
+Success 
 
+```elxiir
+15:40:33.296 [info]  [first_step] params -> []
+
+15:40:33.296 [info]  [second_step] {:ok, :working}
+
+15:40:33.296 [info]  [acknowledge_job] successfully
+
+```
