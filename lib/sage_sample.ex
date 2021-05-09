@@ -16,7 +16,10 @@ defmodule SageSample do
     {:ok, :success_first_step}
   end
 
-  defp second_step(_effects_so_far, _attrs) do
+  defp second_step(effects_so_far, params) do
+    Logger.info("[second_step] effects_so_far -> #{inspect(effects_so_far)}")
+    Logger.info("[second_step] params -> #{inspect(params)}")
+
     :rand.uniform(2)
     |> case do
       1 ->
@@ -37,9 +40,14 @@ defmodule SageSample do
     Logger.warn("[acknowledge_job] failed ")
   end
 
-  def compensate_second_step(_effect_to_compensate, params, _attrs) do
+  def compensate_second_step(effect_to_compensate, params, attrs) do
     # We want to apply forward compensation from :subscription stage for 5 times
-    Logger.info("[compensate_second_step] -> #{inspect(params)}")
-    {:retry, retry_limit: 5, base_backoff: 10, max_backoff: 30_000}
+    Logger.info(
+      "[compensate_second_step] effect_to_compensate -> #{inspect(effect_to_compensate)}"
+    )
+
+    Logger.info("[compensate_second_step] params -> #{inspect(params)}")
+    Logger.info("[compensate_second_step] attrs -> #{inspect(attrs)}")
+    {:retry, retry_limit: 5, base_backoff: 10, max_backoff: 3_000}
   end
 end

@@ -26,7 +26,10 @@ iex(11)> SageSample.do_something
 
 Success 
 
-```elxiir
+```elixir
+
+iex(12)> SageSample.do_something
+
 15:40:33.296 [info]  [first_step] params -> []
 
 15:40:33.296 [info]  [second_step] {:ok, :working}
