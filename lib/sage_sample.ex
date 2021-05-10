@@ -41,7 +41,6 @@ defmodule SageSample do
   end
 
   def compensate_second_step(effect_to_compensate, params, attrs) do
-    # We want to apply forward compensation from :subscription stage for 5 times
     Logger.info(
       "[compensate_second_step] effect_to_compensate -> #{inspect(effect_to_compensate)}"
     )
